@@ -1,0 +1,18 @@
+.pointer {
+    cursor:pointer;
+}
+
+.overlay-buttons-position {
+    top: 0px;
+    bottom: 0px;
+}
+
+.btn-background {
+    background-color: blue;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+}
+
+.btn-background:hover {
+    opacity: 0.3;
+}

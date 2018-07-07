@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from './../components';
+import { Button, ImageSlider } from './../components';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 import axios from 'axios';
@@ -53,9 +53,7 @@ function GirlCard(props)
             <div className="card-header text-center">
                 <h5 className="card-title mb-0">{ props.name }</h5>
             </div>
-            <Link to={ '/girl/' + props.tinder } >
-                <img className="w-100" src={ props.images[0].url } alt={ props.name + '_image' } />
-            </Link>
+            <ImageSlider images={ props.images } />
             <div className="card-body">
                 <p>
                     { unescapejs(props.bio) }

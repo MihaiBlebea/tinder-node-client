@@ -19,7 +19,7 @@ const Pagination = withRouter((props)=> {
                     </li>
                 )
             }
-        } 
+        }
         return result
     }
 
@@ -30,8 +30,8 @@ const Pagination = withRouter((props)=> {
                     <a className="page-link"><i className="fas fa-chevron-left"></i></a>
                 </li>
                 { createPageButtons(props) }
-                <li className="page-item"><a className="page-link">
-                    <i className="fas fa-chevron-right"></i></a>
+                <li className="page-item">
+                    <a className="page-link"><i className="fas fa-chevron-right"></i></a>
                 </li>
             </ul>
         </nav>

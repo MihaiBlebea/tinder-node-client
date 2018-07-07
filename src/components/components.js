@@ -6,7 +6,7 @@ import Gallery from './Gallery/Gallery'
 import TimeLeft from './TimeLeft/TimeLeft'
 import PageTitle from './PageTitle/PageTitle'
 import Pagination from './Pagination/Pagination'
-
+import ImageSlider from './ImageSlider/ImageSlider'
 
 export {
     GirlCard,
@@ -16,5 +16,6 @@ export {
     Gallery,
     TimeLeft,
     PageTitle,
-    Pagination
+    Pagination,
+    ImageSlider
 }
