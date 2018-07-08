@@ -14,7 +14,7 @@ class ImageSlider extends React.Component
     createSlider()
     {
         return (
-            <img src={ this.props.images[this.state.currentImage].url } className="w-100"/>
+            <img src={ this.props.images[this.state.currentImage].url } className="w-100" alt={ 'alt_image' } />
         )
     }
 

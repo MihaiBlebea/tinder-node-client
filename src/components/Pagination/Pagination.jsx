@@ -9,7 +9,7 @@ const Pagination = withRouter((props)=> {
 
     var createPageButtons = (props)=> {
         var result = []
-        if(props.current == 1)
+        if(props.current === 1)
         {
             for(let i = 0; i < 3; i++)
             {

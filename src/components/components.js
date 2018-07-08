@@ -7,6 +7,8 @@ import TimeLeft from './TimeLeft/TimeLeft'
 import PageTitle from './PageTitle/PageTitle'
 import Pagination from './Pagination/Pagination'
 import ImageSlider from './ImageSlider/ImageSlider'
+import SearchForm from './SearchForm/SearchForm'
+
 
 export {
     GirlCard,
@@ -17,5 +19,6 @@ export {
     TimeLeft,
     PageTitle,
     Pagination,
-    ImageSlider
+    ImageSlider,
+    SearchForm
 }
