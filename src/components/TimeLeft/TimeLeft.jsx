@@ -22,12 +22,15 @@ class TimeLeft extends React.Component
     getTimeLeft()
     {
         axios.get(config.api + '/wait').then((result)=> {
-            this.setState({
-                time: {
-                    likes: result.data.likes,
-                    wait: result.data.wait
-                }
-            })
+            if(result.status == 200)
+            {
+                this.setState({
+                    time: {
+                        likes: result.data.likes,
+                        wait: result.data.wait
+                    }
+                })
+            }
         }).catch((error)=> {
             console.log(error)
         })
@@ -40,10 +43,7 @@ class TimeLeft extends React.Component
 
     createLikesLeft()
     {
-        if(this.isStateSet())
-        {
-            return this.state.time.likes
-        }
+        return (this.isStateSet()) ? this.state.time.likes : 0
     }
 
     createTimeLeft()
@@ -53,6 +53,8 @@ class TimeLeft extends React.Component
             var limit = moment(this.state.time.wait);
             var now = moment();
             return limit.diff(now, 'hours')
+        } else {
+            return 0
         }
     }
 

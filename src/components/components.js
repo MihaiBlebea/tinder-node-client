@@ -8,7 +8,7 @@ import PageTitle from './PageTitle/PageTitle'
 import Pagination from './Pagination/Pagination'
 import ImageSlider from './ImageSlider/ImageSlider'
 import SearchForm from './SearchForm/SearchForm'
-
+import MatchCard from './MatchCard/MatchCard'
 
 export {
     GirlCard,
@@ -20,5 +20,6 @@ export {
     PageTitle,
     Pagination,
     ImageSlider,
-    SearchForm
+    SearchForm,
+    MatchCard
 }

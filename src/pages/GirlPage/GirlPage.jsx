@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import config from './../../config';
 import { Gallery, PageTitle } from './../../components/components';
 
 class GirlPage extends React.Component
@@ -19,7 +20,7 @@ class GirlPage extends React.Component
 
     getGirl(id)
     {
-        axios.get('http://localhost:3000/girl/' + id).then((result)=> {
+        axios.get(config.api + '/girl/' + id).then((result)=> {
             this.setState({ girl: result.data })
         })
     }
@@ -34,7 +35,7 @@ class GirlPage extends React.Component
         if(this.state.girl !== null)
         {
             return (
-                <Gallery images={ this.state.girl.images } />
+                <Gallery images={ this.state.girl.photos } />
             )
         }
     }

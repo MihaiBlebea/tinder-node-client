@@ -1,7 +1,9 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import config from './../../config';
-import { PageTitle } from './../../components/components';
+import { PageTitle, MatchCard } from './../../components/components';
+
 
 class NewsPage extends React.Component
 {
@@ -9,13 +11,16 @@ class NewsPage extends React.Component
     {
         super()
         this.state = {
-            news: null
+            news: null,
+            matches: [],
+            messages: []
         }
     }
 
     componentDidMount()
     {
         this.getNews()
+        this.getMatches()
     }
 
     getNews()
@@ -29,72 +34,34 @@ class NewsPage extends React.Component
         })
     }
 
+    getMatches()
+    {
+        axios.get(config.api + '/history').then((results)=> {
+            this.setState({
+                matches: results.data.matches,
+                messages: results.data.messages
+            })
+        }).catch((error)=> {
+            console.log(error)
+        })
+    }
+
     createMatches()
     {
-        if(this.isStateSet())
+        if(this.state.matches.length > 0)
         {
-            if(this.state.news.matches.length > 0)
-            {
-                return this.state.news.matches.map((match)=> {
-                    return (
-                        <div>
-                            New Match
-                        </div>
-                    )
-                })
-            } else {
+            return this.state.matches.map((match)=> {
                 return (
-                    <p>No new Matches</p>
+                    <div className="mb-2">
+                        <Link to={ '/girl/' + match.person._id } >
+                            <MatchCard bio={ match.person.bio }
+                                       name={ match.person.name }
+                                       image={ match.person.photos[0].url }/>
+                        </Link>
+                    </div>
                 )
-            }
+            })
         }
-    }
-
-    createMessages()
-    {
-        if(this.isStateSet())
-        {
-            if(this.state.news.inbox.length > 0)
-            {
-                return this.state.news.inbox.map((message)=> {
-                    return (
-                        <div>
-                            Message
-                        </div>
-                    )
-                })
-            } else {
-                return (
-                    <p>No new Messages</p>
-                )
-            }
-        }
-    }
-
-    createBlocks()
-    {
-        if(this.isStateSet())
-        {
-            if(this.state.news.blocks.length > 0)
-            {
-                return this.state.news.blocks.map((block)=> {
-                    return (
-                        <div>
-                            Block
-                        </div>
-                    )
-                })
-            } else {
-                return (
-                    <p>No new Blocks</p>
-                )
-            }
-        }
-    }
-
-    isStateSet()
-    {
-        return (this.state.news !== null) ? true : false;
     }
 
     render()
@@ -102,11 +69,11 @@ class NewsPage extends React.Component
         return (
             <div>
                 <PageTitle>News page</PageTitle>
-                { this.createMatches() }
-                <hr />
-                { this.createMessages() }
-                <hr />
-                { this.createBlocks() }
+                <div className="row justify-content-center">
+                    <div className="col-md-6">
+                        { this.createMatches() }
+                    </div>
+                </div>
             </div>
         )
     }

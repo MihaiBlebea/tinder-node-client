@@ -21,7 +21,7 @@ function Navigation()
                 </li>
             </ul>
 
-            
+            <TimeLeft />
         </nav>
     )
 }

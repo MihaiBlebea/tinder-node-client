@@ -61,24 +61,41 @@ class GirlsPage extends React.Component
         this.searchGirl(event)
     }
 
+    handlePageChange(page)
+    {
+        this.getGirls(page)
+    }
+
+    createPagination()
+    {
+        if(this.state.limit !== null)
+        {
+            return (
+                <Pagination limit={ this.state.limit }
+                            current={ this.state.current }
+                            pages={ this.state.pages }
+                            total={ this.state.total }
+                            onChangePage={ (page)=> this.handlePageChange(page) } />
+            )
+        }
+    }
+
     render()
     {
         return (
             <div>
                 <PageTitle>Girls page</PageTitle>
                 <SearchForm submit={ (ev)=> this.handleSearchFormSubmit(ev) } />
-                <div className="">
-                    <Pagination limit={ this.state.limit }
-                                current={ this.state.current }
-                                pages={ this.state.pages }
-                                total={ this.state.total } />
+                <div className="row justify-content-end mb-5">
+                    <div className="col-md-3">
+                        { this.createPagination() }
+                    </div>
                 </div>
                 <GirlCards girls={ this.state.girls } />
                 <div className="row justify-content-center mt-5">
-                    <Pagination limit={ this.state.limit }
-                                current={ this.state.current }
-                                pages={ this.state.pages }
-                                total={ this.state.total } />
+                    <div className="col-md-3">
+                        { this.createPagination() }
+                    </div>
                 </div>
             </div>
         )
